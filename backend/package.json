@@ -1,0 +1,24 @@
+{
+  "name": "discord-clone-backend",
+  "version": "0.0.0",
+  "description": "Simplified Discord clone backend",
+  "license": "ISC",
+  "author": "Travis Sova",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "helmet": "^8.1.0",
+    "mysql2": "^3.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
