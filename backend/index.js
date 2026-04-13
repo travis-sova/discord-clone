@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
     if (!req.body) return res.status(400).json("Body required");
     const { name, pass } = req.body;
-    if (!name || !pass) return res.status(400).send("Name and pass needed");
+    if (!name || !pass) return res.status(400).json("Name and pass needed");
 
     const passwordHash = await hashPassword(pass);
     if (!passwordHash) return res.status(500).json("error");
@@ -79,7 +79,7 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
     if (!req.body) return res.sendStatus(400);
     const { name, pass } = req.body;
-    if (!name || !pass) return res.status(400).send("Name and pass needed");
+    if (!name || !pass) return res.status(400).json("Name and pass needed");
     authenticate(name, pass, function (err, user) {
         if (err) return res.status(400).json(err);
         if (user) {
@@ -92,7 +92,7 @@ app.post("/login", async (req, res) => {
                 })
             })
         } else {
-            res.status(401).json('unrecognized user or pass')
+            res.status(401).json('Login or password is invalid.')
         }
     })
 })
@@ -102,7 +102,7 @@ app.post("/server/register", requireAuth, async (req, res) => {
 
     const userId = req.session.user.id;
     const { name } = req.body;
-    if (!name) return res.status(400).send("Server name required");
+    if (!name) return res.status(400).json("Server name required");
 
     try {
         await pool.execute(
@@ -110,7 +110,7 @@ app.post("/server/register", requireAuth, async (req, res) => {
             [name, userId]
         );
 
-        return res.send(`Server ${name} created`)
+        return res.json(`Server ${name} created`)
     } catch (err) {
         if (err.errno === 1062) return res.status(409).json("Name already exists");
         console.log(err)
@@ -124,7 +124,7 @@ app.post("/channel/:serverId/register", requireAuth, async (req, res) => {
     const userId = req.session.user.id;
     const { name } = req.body;
     const serverId = req.params.serverId;
-    if (!name) return res.status(400).send("Channel name required");
+    if (!name) return res.status(400).json("Channel name required");
 
     try {
         const [rows] = await pool.execute(
@@ -141,7 +141,7 @@ app.post("/channel/:serverId/register", requireAuth, async (req, res) => {
             [name, serverId]
         );
 
-        return res.send(`Channel ${name} created`)
+        return res.json(`Channel ${name} created`)
     } catch (err) {
         if (err.errno === 1062) return res.status(409).json("Name already exists");
         console.log(err)
@@ -165,7 +165,7 @@ app.post("/channel/:channelId/message", requireAuth, async (req, res) => {
             [message, userId, channelId]
         );
 
-        return res.send(`Message Sent`)
+        return res.json(`Message Sent`)
     } catch (err) {
         console.log(err)
         return res.status(500).json("error")
@@ -184,7 +184,7 @@ app.delete("/channel/:channelId/message/:messageId", requireAuth, async (req, re
             [messageId, channelId, userId]
         );
 
-        return res.send(`Message deleted`)
+        return res.json(`Message deleted`)
     } catch (err) {
         console.log(err)
         return res.status(500).json("error")
