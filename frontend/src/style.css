@@ -1,1 +1,352 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "gg sans", "ABC Ginto Discord", "Segoe UI", sans-serif;
+  --font-ginto: "ABC Ginto Discord", "gg sans", "Segoe UI", sans-serif;
+  --font-ginto-nord: "ABC Ginto Discord Nord", "ABC Ginto Discord", "gg sans", "Segoe UI", sans-serif;
+  --font-mono: "gg sans mono", "Cascadia Code", Consolas, monospace;
+
+  --color-brand: #5865f2;
+  --color-text-brand: color-mix(in oklab, hsl(228.785 calc(1*100%) 79.02%/1) 100%, #000 0%);
+  --color-plum-6: hsl(231.429 calc(1*6.667%) 79.412%/1);
+  --color-blurple-50: hsl(234.935 calc(1*85.556%) 64.706%/1);
+  --color-login-gray: hsl(232.5 calc(1*6.557%) 23.922%/1);
+  --color-login-text-gray: hsl(231.429 calc(1*4.348%) 68.431%/1);
+  --color-login-input-bg: hsl(0 calc(1*0%) 0%/0.0784313725490196);
+  --color-login-user-border: color-mix(in oklab, hsl(213.281 calc(1*87.671%) 71.373%/1) 100%, #000 0%);
+  --color-feedback-critical: color-mix(in oklab, hsl(3 calc(1*100%) 80.392%/1) 100%, #000 0%);
+  --color-login-hover: hsl(232.941 calc(1*46.667%) 50%/1);
+  --color-text-subtle: color-mix(in oklab, hsl(228 calc(1*4.505%) 78.235%/1) 100%, #000 0%);
+  --color-text-link: color-mix(in oklab, hsl(213.281 calc(1*87.671%) 71.373%/1) 100%, #000 0%);
+  --color-text-link-dark: color-mix(in oklab, hsl(212.795 calc(1*82.564%) 61.765%/1) 100%, #000 0%);
+  --color-text-register-disabled: hsl(0 calc(1*0%) 100%/1);
+  --color-tooltip: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.12156862745098039) 100%, hsl(0 0% 0%/0.12156862745098039) 0%);
+  --color-register-border: color-mix(in oklab, hsl(234.935 calc(1*85.556%) 64.706%/1) 100%, #000 0%);
+  --color-neutral: hsl(240 calc(1*5.263%) 7.451%/1);
+  --color-main-default: hsl(231.429 calc(1*4.348%) 68.431%/1);
+  --color-background-mod: hsl(240 calc(1*4%) 60.784%/0.0784313725490196);
+  --color-app-border: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.12156862745098039) 100%, hsl(0 0% 0%/0.12156862745098039) 0%);
+  --color-interactive-background-hover: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.0784313725490196) 100%, hsl(0 0% 0%/0.0784313725490196) 0%);
+  --color-interactive-background-selected: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.2) 100%, hsl(0 0% 0%/0.2) 0%);
+  --color-background-ligher: hsl(240 calc(1*7.143%) 10.98%/1);
+  --color-secondary-border: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.0392156862745098) 100%, hsl(0 0% 0%/0.0392156862745098) 0%);
+  --color-channels-default: color-mix(in oklab, hsl(233.333 calc(1*3.704%) 52.353%/1) 100%, #000 0%);
+  --color-chat-background-default: color-mix(in oklab, hsl(228 calc(1*6.849%) 14.314%/1) 100%, #000 0%);
+  --color-border-muted: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.0392156862745098) 100%, hsl(0 0% 0%/0.0392156862745098) 0%);
+  --color-interactive-text-active: color-mix(in oklab, hsl(0 calc(1*0%) 98.431%/1) 100%, #000 0%);
+  --color-lottie: color-mix(in oklab, hsl(231.429 calc(1*4.348%) 68.431%/1) 100%, #000 0%);
+  --color-background-surface-high: color-mix(in oklab, hsl(240 calc(1*6.494%) 15.098%/1) 100%, #000 0%);
+  --color-secondary-background-hover: hsl(240 calc(1*4%) 60.784%/0.1607843137254902);
+  --color-secondary-text-default: hsl(0 calc(1*0%) 98.431%/1);
+  --color-border-strong: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.4392156862745098) 100%, hsl(0 0% 0%/0.4392156862745098) 0%);
+  --color-overlay-secondary-background-default: hsl(0 calc(1*0%) 0%/0.5215686274509804);
+  --color-overlay-secondary-background-active: hsl(0 calc(1*0%) 0%/0.47843137254901963);
+  --color-white-8: hsl(0 calc(1*0%) 100%/0.0784313725490196);
+  --color-background-lower: color-mix(in oklab, hsl(240 calc(1*7.143%) 10.98%/1) 100%, #000 0%);
+  --color-text-muted: color-mix(in oklab, hsl(232.5 calc(1*3.96%) 60.392%/1) 100%, #000 0%);
+  --color-control-secondary-background-default: hsl(240 calc(1*4%) 60.784%/0.12156862745098039);
+  --color-control-secondary-border-default: color-mix(in oklab, hsl(240 calc(1*4%) 60.784%/0.0392156862745098) 100%, hsl(0 0% 0%/0.0392156862745098) 0%);
+  --color-control-secondary-text-default: hsl(0 calc(1*0%) 98.431%/1);
+  --color-control-secondary-background-hover: hsl(240 calc(1*4%) 60.784%/0.1607843137254902);
+  --color-control-secondary-border-hover: hsl(240 calc(1*4%) 60.784%/0.0392156862745098);
+  --color-control-secondary-text-hover: hsl(0 calc(1*0%) 98.431%/1);
+  --color-background-mod-subtle: hsl(240 calc(1*4%) 60.784%/0.12156862745098039);
+  --color-background-brand: hsl(234.935 calc(1*85.556%) 64.706%/1);
+  --color-border-subtle: color-mix(in oklab,hsl(240 calc(1*4%) 60.784%/0.12156862745098039) 100%,hsl(0 0% 0%/0.12156862745098039) 0%);
+
+  --animate-crown: crown 40s ease-in-out infinite;
+
+  @keyframes crown {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    33% {
+      transform: translate(-14px, 12px) rotate(10deg) scale(0.9);
+    }
+
+    66% {
+      transform: translate(14px, 12px) rotate(20deg) scale(0.85);
+    }
+
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+  }
+
+  --animate-cup: cup 40s ease-in-out infinite;
+
+  @keyframes cup {
+
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-20deg) scale(1);
+    }
+
+    25% {
+      transform: translate(-20px, 30px) rotate(-10deg) scale(0.95);
+    }
+
+    50% {
+      transform: translate(-30px, 100px) rotate(20deg) scale(0.8);
+    }
+
+    75% {
+      transform: translate(-10px, 60px) rotate(5deg) scale(0.9);
+    }
+  }
+
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-leaf: leaf 20s ease-in-out infinite;
+
+  @keyframes leaf {
+
+    0%,
+    100% {
+      transform: rotate(-15deg);
+    }
+
+    50% {
+      transform: rotate(10deg);
+    }
+  }
+
+  --animate-slide: slide 0.3s ease-in-out;
+
+  @keyframes slide {
+
+    0% {
+      opacity: 0%;
+      transform: translateY(-20px);
+    }
+
+    100% {
+      opacity: 100%;
+      transform: translateY(0);
+    }
+  }
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-Regular.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-RegularItalic.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-RegularItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-Medium.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-MediumItalic.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord/ABC%20Ginto%20Discord%20Complete%20Web/ABCGintoDiscord-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord Nord";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-Bold.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord Nord";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-BoldItalic.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ABC Ginto Discord Nord";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src:
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-BlackItalic.woff2") format("woff2"),
+    url("/ABC%20Ginto%20Discord%20Nord/ABC%20Ginto%20Discord%20Nord%20Complete%20Web/ABCGintoDiscordNord-BlackItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-Normal.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-Normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-NormalItalic.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-NormalItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-Medium.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-MediumItalic.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-SemiBold.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-SemiBoldItalic.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-SemiBoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-Bold.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-BoldItalic.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-ExtraBold.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Static/ggsans-ExtraBoldItalic.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Static/ggsans-ExtraBoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/Web/Variable/ggsansvf-VF.woff2") format("woff2"),
+    url("/gg%20sans%20Font/Web/Variable/ggsansvf-VF.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/gg%20sans%20Font/Web/Variable/ggsansvf-Italic-VF.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/gg%20sans%20mono/WOFF2/ggsansmono-Normal.woff2") format("woff2"),
+    url("/gg%20sans%20Font/gg%20sans%20mono/WOFF/ggsansmono-Normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gg sans mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/gg%20sans%20Font/gg%20sans%20mono/WOFF2/ggsansmono-Bold.woff2") format("woff2"),
+    url("/gg%20sans%20Font/gg%20sans%20mono/WOFF/ggsansmono-Bold.woff") format("woff");
+}
+
+body {
+  font-family: var(--font-ginto);
+}
